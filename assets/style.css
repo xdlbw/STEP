@@ -13,7 +13,10 @@
 }
 
 *, *::before, *::after { box-sizing: border-box; }
-html { scroll-padding-top: 5rem; }
+html { scroll-behavior: smooth; scroll-padding-top: 5rem; }
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+}
 body { margin: 0; color: var(--ink); background: #fff; font-size: 1.125rem; line-height: 1.5; }
 [hidden] { display: none !important; }
 a { color: var(--accent); text-underline-offset: .16em; }
