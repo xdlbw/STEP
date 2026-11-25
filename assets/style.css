@@ -74,7 +74,7 @@ h1 { margin-inline: auto; color: #22364a; max-width: 62rem; font-size: clamp(2re
   font: 700 .93rem Arial, sans-serif;
   text-decoration: none;
 }
-.paper-link img { width: 1.2rem; height: 1.2rem; object-fit: contain; }
+.paper-link :is(img, svg) { width: 1.2rem; height: 1.2rem; flex-shrink: 0; object-fit: contain; }
 .paper-link:hover { border-color: var(--accent); color: var(--accent); }
 .paper-abstract { max-width: 100ch; margin-inline: auto; text-align: justify; text-wrap: pretty; }
 .paper-abstract strong, .step-initial { color: var(--accent); }
@@ -189,9 +189,41 @@ tbody:has(.ours) tr + tr th { padding-left: 1.2rem; }
 .key-metric { border-left: 1px solid var(--border); }
 #metrics-t2v colgroup:last-of-type { border-left: 1px solid var(--border); }
 .table-note { margin-top: .5rem; color: var(--muted); font-size: .95rem; }
+.bibtex-panel {
+  padding: clamp(.8rem, 2.2vw, 1.25rem);
+  border: 1px solid var(--border);
+  border-radius: .65rem;
+  background: var(--surface);
+}
+.bibtex-actions {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  align-items: center;
+  gap: .3rem .75rem;
+}
+.bibtex-copy {
+  padding: .36rem .85rem;
+  border: 1px solid #a7b9c6;
+  border-radius: 2rem;
+  background: #fff;
+  color: var(--ink);
+  font: 700 .86rem Arial, sans-serif;
+}
+.bibtex-copy:hover { border-color: var(--accent); color: var(--accent); }
+.bibtex-status { color: var(--muted); font-size: .9rem; text-align: right; }
+.bibtex-status:empty { display: none; }
+.bibtex-panel pre {
+  margin: .5rem 0 0;
+  font: .9rem/1.55 ui-monospace, "SFMono-Regular", Consolas, "Liberation Mono", monospace;
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+}
 footer { margin-top: 2.5rem; padding: 1.25rem 0; background: #22364a; }
 .footer-row { flex-wrap: wrap; gap: 1.1rem 2rem; }
-.footer-name { color: #fff; font: 700 1.13rem Arial, sans-serif; letter-spacing: .05em; }
+.footer-name { color: #fff; font: 700 1.13rem Arial, sans-serif; letter-spacing: .05em; text-decoration: none; }
+.footer-name:hover { text-decoration: underline; }
+.footer-name:focus-visible { outline-color: #fff; }
 .footer-institutions {
   display: flex;
   align-items: center;

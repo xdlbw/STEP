@@ -217,3 +217,24 @@ document.addEventListener('visibilitychange', () => {
   for (const player of players.values()) player.refreshPlayback();
 });
 document.querySelectorAll('[data-tabs]').forEach(setUpTabs);
+
+const bibtexSection = document.getElementById('bibtex');
+if (bibtexSection) {
+  const citation = bibtexSection.querySelector('code');
+  const copy = bibtexSection.querySelector('.bibtex-copy');
+  const status = bibtexSection.querySelector('.bibtex-status');
+  copy.hidden = false;
+  copy.addEventListener('click', async () => {
+    try {
+      await navigator.clipboard.writeText(citation.textContent);
+      status.textContent = 'Copied to clipboard.';
+    } catch {
+      const range = document.createRange();
+      range.selectNodeContents(citation);
+      const selection = window.getSelection();
+      selection.removeAllRanges();
+      selection.addRange(range);
+      status.textContent = 'Citation selected. Press Ctrl+C or Command+C to copy.';
+    }
+  });
+}
